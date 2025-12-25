@@ -57,13 +57,29 @@ namespace P01_ALBARRAN_VS_ENGRANAJES
 
         private void ir_Click(object sender, RoutedEventArgs e)
         {
-            var ventanaPrincipal = Window.GetWindow(this) as MainWindow;
-
-            if (ventanaPrincipal != null)
+            if (windowsOperation.Content is not VentanaInicialVIEWS)
             {
-                ventanaPrincipal.windowsOperation.Content = new _01InicioEngranajesRectosVIEW();
+                MessageBoxResult resultado = MessageBox.Show("¿Está seguro que desea comenzar de nuevo?", "Advertencia",MessageBoxButton.YesNo);
+
+                if (resultado==MessageBoxResult.Yes) {
+
+                    var ventanaPrincipal = Window.GetWindow(this) as MainWindow;
+
+                    if (ventanaPrincipal != null)
+                    {
+                        ventanaPrincipal.windowsOperation.Content = new _01InicioEngranajesRectosVIEW();
+                    }
+                }
             }
-            
+            else 
+            {
+                var ventanaPrincipal = Window.GetWindow(this) as MainWindow;
+
+                if (ventanaPrincipal != null)
+                {
+                    ventanaPrincipal.windowsOperation.Content = new _01InicioEngranajesRectosVIEW();
+                }
+            }
         }
 
         private void AbirAcercaDeView(object sender, RoutedEventArgs e)
@@ -80,12 +96,21 @@ namespace P01_ALBARRAN_VS_ENGRANAJES
 
         private void GuardarDatos_Click(object sender, RoutedEventArgs e)
         {
-            //PdfSharpDocs Plantilla = new PdfSharpDocs();
-            //PdfDocument pdfDocument = new PdfDocument();
-            //pdfDocument = Plantilla.PlantillaResultados();
+            if (windowsOperation.Content is _05_DisenoFlexionView ventanaDiseño)
+            {
+                ventanaDiseño.GuardarResultado();
 
-            //PdfManager pdfManager = new PdfManager();
-            //pdfManager.GuardarYMostrarPdf(pdfDocument);
+            }
+
+            else if (windowsOperation.Content is VentanaInicialVIEWS)
+            {
+                MessageBox.Show("No tiene ningun trabajo para guardar. ","Error",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            }
+
+            else
+            {
+                MessageBox.Show("El proceso de cálculo sigue incompleto, debe concluir con su trabajo. ", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
     }

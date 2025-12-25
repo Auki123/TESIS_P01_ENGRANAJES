@@ -134,7 +134,9 @@
                             Margin="0,0,10,0"></Button>
                     
                     <Button Content="Finalizar"
-                            Width="70"></Button>
+                            Width="70"
+                            Click="FinalizarTrabajo"
+                            ></Button>
                 </StackPanel>
             </Border>
         </Grid>

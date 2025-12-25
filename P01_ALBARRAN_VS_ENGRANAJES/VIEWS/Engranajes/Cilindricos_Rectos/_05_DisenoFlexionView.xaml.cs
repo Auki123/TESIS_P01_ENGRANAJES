@@ -5,6 +5,7 @@ using P01_ALBARRAN_VS_ENGRANAJES.Model.PDF_Manager;
 using P01_ALBARRAN_VS_ENGRANAJES.ViewModel;
 using PdfSharpCore.Pdf;
 using ScottPlot.LegendLayouts;
+using ScottPlot.TickGenerators.Financial;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -154,6 +155,34 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             documentoPdF = Plantilla.PlantillaResultados();
 
             miPdfManager.GuardarYMostrarPdf(documentoPdF);
+        }
+
+        public void GuardarResultado()
+        {
+            PdfSharpDocs Plantilla = new PdfSharpDocs(_datoGeometria, _datosCarga, _factoresK, _ResPinon, _ResCorona);
+            PdfManager miPdfManager = new PdfManager();
+
+            PdfDocument documentoPdF = new PdfDocument();
+            documentoPdF = Plantilla.PlantillaResultados();
+
+            miPdfManager.GuardarYMostrarPdf(documentoPdF);
+        }
+
+        private void FinalizarTrabajo(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult resultado = MessageBox.Show("¡Está seguro de finalizar?, una vez de por terminado no podrá volver.", "Finalizar",MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (resultado == MessageBoxResult.Yes)
+            {
+                var ventanaPrincipal = Window.GetWindow(this) as MainWindow;
+
+                VentanaInicialVIEWS VentanaInicial = new VentanaInicialVIEWS(); 
+
+                if (ventanaPrincipal != null)
+                {
+                    ventanaPrincipal.windowsOperation.Content = null;
+                    ventanaPrincipal.windowsOperation.Content = VentanaInicial;
+                }
+            }
         }
     }
 }
