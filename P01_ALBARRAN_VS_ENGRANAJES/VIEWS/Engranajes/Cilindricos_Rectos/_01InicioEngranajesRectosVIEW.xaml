@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos._01InicioEngranajesRectosVIEW"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="30">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Image Margin="10,10,10,240"
+                    Source="/Assets/Images/Tecnico/Engranaje_CilindricoRecto/E1_ENGRANAJE_RECTO.png"
+                    Width="auto"
+                    Height="auto"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    ></Image>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <TextBlock TextWrapping="Wrap" Margin="10" FontSize="14">
+                        <Run Text="Consideraciones de diseño para engranajes Cilíndricos Rectos:" FontWeight="Bold"/>
+                    <LineBreak/>
+                        <Run Text="   • Para par de engranajes y dientes de involuta."/>
+                    <LineBreak/>
+                        <Run Text="   • Dientes de profundidad total."/>
+                    <LineBreak/>
+                        <Run Text="   • Dinetes con carga en el HPSTC."/>
+                    <LineBreak/>
+                        <Run Text="   • Basado en la metodología AGMA presentada en Norton"/>
+                    
+                </TextBlock>
+
+            </Grid>
+
+
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Click="Regresar_Click"
+                Content="Anterior"
+                Margin="0,0,10,0"
+                Name="Regresar"
+                Width="60"
+                HorizontalAlignment="Right"
+                ></Button>
+                
+                <Button
+                HorizontalAlignment="Right"
+                Width="60"
+                Content="Siguente"
+                Background="{StaticResource Gris9}"
+                Click="CONTINUAR___I_Click"
+                ></Button>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,17 @@
+﻿<Window x:Class="P01_ALBARRAN_VS_ENGRANAJES.VIEWS.VentanasUI.ManualUsuarioView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:P01_ALBARRAN_VS_ENGRANAJES.VIEWS.VentanasUI"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:pdf="clr-namespace:PdfiumViewer;assembly=PdfiumViewer"
+        mc:Ignorable="d"
+        Title="Manual de Usuario" Height="450" Width="800"
+        Icon="/Assets/Images/UI/Icon_Engrane.ico"
+        Background="{StaticResource Azul3}">
+        
+    <Grid Margin="5" Background="{StaticResource Azul10}">
+        <wfi:WindowsFormsHost x:Name="winFormsHost"/>
+    </Grid>
+</Window>

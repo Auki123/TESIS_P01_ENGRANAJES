@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--#region Control's Keys-->
+    <SolidColorBrush x:Key="gray" Color="#919191"></SolidColorBrush>
+    <SolidColorBrush x:Key="dark-gray" Color="#5E5D5D"></SolidColorBrush>
+    <SolidColorBrush x:Key="light-Gray" Color="#DBDBDB"></SolidColorBrush>
+    <SolidColorBrush x:Key="sea-green" Color="#59BA8B"></SolidColorBrush>
+    <SolidColorBrush x:Key="neon-green" Color="#46ED07"></SolidColorBrush>
+    <SolidColorBrush x:Key="bright-red" Color="#ED0707"></SolidColorBrush>
+    <SolidColorBrush x:Key="purple" Color="#A832C7"></SolidColorBrush>
+    <SolidColorBrush x:Key="cobalt-blue" Color="#052387"></SolidColorBrush>
+    <SolidColorBrush x:Key="deep-pink" Color="#DE16A9"></SolidColorBrush>
+    <SolidColorBrush x:Key="carmine-pink" Color="#DE1659"></SolidColorBrush>
+    <SolidColorBrush x:Key="sky-blue" Color="#16A5DE"></SolidColorBrush>
+    <SolidColorBrush x:Key="ocean-blue" Color="#16DECD"></SolidColorBrush>
+    <SolidColorBrush x:Key="dark-orange" Color="#DE9116"></SolidColorBrush>
+    <SolidColorBrush x:Key="ash-gray" Color="#FFAFAFAF"></SolidColorBrush>
+    <SolidColorBrush x:Key="warm-gray" Color="#FF787979"></SolidColorBrush>
+    <SolidColorBrush x:Key="jade-green" Color="#0AA17B"></SolidColorBrush>
+    <SolidColorBrush x:Key="Extra_light_Gray" Color="#FFDFDFDF"></SolidColorBrush>
+    
+    
+    <SolidColorBrush x:Key="Azul1" Color="#070B12"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul2" Color="#141F33"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul3" Color="#213354"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul4" Color="#2F4775"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul5" Color="#3C5B96"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul6" Color="#466BB0"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul7" Color="#6989C3"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul8" Color="#8AA3D0"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul9" Color="#ABBDDE"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul10" Color="#CCD7EB"></SolidColorBrush>
+    <SolidColorBrush x:Key="Azul11" Color="#EDF1F8"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="Gris1" Color="#202228"></SolidColorBrush>
+    <SolidColorBrush x:Key="Gris2" Color="#343841"></SolidColorBrush>
+    <SolidColorBrush x:Key="Gris3" Color="#494E5B"></SolidColorBrush>
+    <SolidColorBrush x:Key="Gris4" Color="#5D6474"></SolidColorBrush>
+    <SolidColorBrush x:Key="Gris5" Color="#717A8E"></SolidColorBrush>
+    <SolidColorBrush x:Key="Gris6" Color="#8B92A2"></SolidColorBrush>
+    <SolidColorBrush x:Key="Gris7" Color="#9DA3B0"></SolidColorBrush>
+    <SolidColorBrush x:Key="Gris8" Color="#BEC2CB"></SolidColorBrush>
+    <SolidColorBrush x:Key="Gris9" Color="#D7DADF"></SolidColorBrush>
+    <SolidColorBrush x:Key="Gris10" Color="#F1F2F4"></SolidColorBrush>
+
+
+
+    <!--#endregion-->
+    
+    
+</ResourceDictionary>

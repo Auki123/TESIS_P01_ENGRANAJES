@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos._04_FactoresK_EsfuerzoVIEW"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="10" FontSize="14">    
+                <Run Text="Factores K de esfuerzo y de Resistencia de Materiales:" FontWeight="Bold"/>
+            <LineBreak/>
+                <Run Text="Los factores K, modifican el valor del esfuerzo que sufre el material, y también modifica el valor de la resistencia segun el entorno. Vea el manual para identificar el procedimiento de cálculo."/>
+        </TextBlock>
+
+        <!--Aqui defino la ventana de operaciones-->
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!--Aqui defino la ventana de operaciones con Stack panel-->
+
+            <StackPanel Grid.Column="0" Margin="5" Height="Auto">
+                <TextBlock Text="Factores K de esfuerzo:" Margin="10,0,0,0" FontWeight="Bold" FontSize="14"></TextBlock>
+                
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,2">
+                    <TextBlock Text="➣ Factor Geométrico J :           " FontSize="14" FontWeight="SemiBold" Margin="10,0,0,0"></TextBlock>
+                    <Button Height="20" Width="50" Content="Calcular" FontSize="12" Click="CalcularJ"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,4,10,0">
+                    <TextBlock Text="J piñón:   " FontSize="12" Margin="30,0,0,0"></TextBlock>
+                    <TextBox Name="Jfactor_pinon" IsEnabled="False" Height="18" Width="50"></TextBox>
+                    <TextBlock Text="     J corona :  " FontSize="12"></TextBlock>
+                    <TextBox Name="Jfactor_corona" IsEnabled="False" Height="18" Width="50"></TextBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="➣ Factor dinámico Kv:  " FontSize="12"  FontWeight="SemiBold" Margin="10,0,0,0" ></TextBlock>
+                    <Button Content="Calcular " Click="Ir_A_CalcularKv" Width="50"></Button>
+                    <TextBlock Text="--->"></TextBlock>
+                    <TextBox IsEnabled="False"
+                             Name="KVCALCULADO"
+                             Width="50"
+                             ></TextBox>
+                </StackPanel>
+                
+                
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="➣ Aplicaciones de Ka:  " FontSize="12" FontWeight="SemiBold" Margin="10,0,0,0"></TextBlock>
+                    <Button Height="20" Width="50" Content="Calcular " Click="Ir_A_CalcularKa"></Button>
+                    <TextBlock Text="--->"></TextBlock>
+                    
+                    <TextBox Width="50" IsEnabled="False"
+                             Name="Ka_value"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="➣ Factor de Tamaño Ks=1,25     " FontSize="12" FontWeight="SemiBold" Margin="10,0,0,0"></TextBlock>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Margin="10,10,10,3">
+                    <TextBlock Text="➣ Factor de espesor de Aro Kb:     " FontSize="12" FontWeight="SemiBold" Margin="10,0,0,0"></TextBlock>
+                    <Button Content="Calcular " Click="Ir_A_CalcularKB"></Button>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Margin="10,3,10,10">
+                    <TextBlock Text="Kb_piñón: " FontSize="12" Margin="30,0,0,0"></TextBlock>
+                    <TextBox Width="50" IsEnabled="False" Name="KBp_TextBox"></TextBox>
+
+                    <TextBlock Text="Kb_corona: " FontSize="12" Margin="12,0,0,0"></TextBlock>
+                    <TextBox Width="50" IsEnabled="False" Name="KBg_TextBox"></TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Factores K de Resistencia:" FontWeight="Bold" FontSize="14"></TextBlock>
+
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="➣ Factor de vida KL:    " FontWeight="SemiBold" FontSize="12"></TextBlock>
+                    <TextBlock Text=" Se define para E7 ciclos: KL =1"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <TextBlock Text="➣ Factor de Temperatura KT:        " FontWeight="SemiBold" FontSize="12"></TextBlock>
+                    <TextBox Width="60" Name="KT_value" IsEnabled="False"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="Temperatura del lubricante °C:   " FontSize="12" Margin="15,0,0,0"></TextBlock>
+                    <TextBox Width="60" Name="KT_Temperaturavalue" PreviewTextInput="ValidarEntradaTemp"></TextBox>
+                    <TextBlock Text="--->" FontSize="13"></TextBlock>
+                    <Button Width="50" Click="Ir_A_CalcularKT" Content="Calcular "></Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="➣ Factor de Confiabiidad KR:        " FontWeight="SemiBold" FontSize="12"></TextBlock>
+                    <ComboBox Width="70" SelectionChanged="KR_SELECTION" Name="ValoresKR">
+                        <ComboBoxItem Name="value90" Content="90,00%"></ComboBoxItem>
+                        <ComboBoxItem Name="value99" Content="99,00%"></ComboBoxItem>
+                        <ComboBoxItem Name="value99_9" Content="99,90%"></ComboBoxItem>
+                        <ComboBoxItem Name="value99_99" Content="99,99%"></ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock Text="   ." FontSize="13"></TextBlock>
+                    <TextBox Width="60" IsEnabled="False"
+                             Name="KR_value"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+            <Button Click="Regresar_Click"
+                Content="Redefinir carga"
+                Margin="0,0,10,0"
+                Width="90"></Button>
+            
+            <Button
+                Name="ContinuarAresultados"
+                Click="Ir_A_CalcularEsfuerzo"
+                Content="Continuar "
+                HorizontalAlignment="Right"
+                Width="70"
+                >
+            </Button>
+        </StackPanel>
+
+
+                    
+    </Grid>
+</UserControl>

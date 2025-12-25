@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ManualUsuarioView.xaml.cs" />
+    <Compile Remove="VIEWS\VentanasUI\ManualUsuarioView.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\ArchivosEditables\ManualDeUsuario.pdf" />
+    <None Remove="Assets\ArchivosEditables\PlantillaEcilindricosRectos.pdf" />
+    <None Remove="Assets\ArchivosEditables\PlantillaEcilindricosRectos1.pdf" />
+    <None Remove="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_factorKv.png" />
+    <None Remove="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_IndiceCalidad_SegunUso.png" />
+    <None Remove="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_IndiceCalidad_SegunVelocidad.png" />
+    <None Remove="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_ParametroKB.png" />
+    <None Remove="Assets\Images\UI\Icon_Engrane.ico" />
+    <None Remove="Assets\Images\UI\LogoSistema.png" />
+    <None Remove="Assets\Images\UI\Logo_UTN.png" />
+    <None Remove="Assets\Images\UI\Mecatronica.png" />
+    <None Remove="DataBase\DATABASE_GEAR_VALUE.db" />
+    <None Remove="Model\PDF_Manager\Pdf_Images\ISOA_E.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="ManualUsuarioView.xaml" />
+    <Page Remove="VIEWS\VentanasUI\ManualUsuarioView.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\ArchivosEditables\PlantillaEcilindricosRectos.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\ArchivosEditables\PlantillaEcilindricosRectos1.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataBase\DATABASE_GEAR_VALUE.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\ArchivosEditables\ManualDeUsuario.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Model\PDF_Manager\Pdf_Images\ISOA_E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Assets\Images\UI\LogoSistema.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.1" />
+    <PackageReference Include="PdfSharpCore" Version="1.3.67" />
+    <PackageReference Include="ScottPlot" Version="5.1.57" />
+    <PackageReference Include="ScottPlot.WPF" Version="5.1.57" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E1_ENGRANAJE_RECTO.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_factorKv.png" />
+    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_IndiceCalidad_SegunUso.png" />
+    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_IndiceCalidad_SegunVelocidad.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_ParametroKB.png" />
+    <Resource Include="Assets\Images\UI\Icon_Engrane.ico" />
+    <Resource Include="Assets\Images\UI\Logo_UTN.png" />
+    <Resource Include="Assets\Images\UI\Mecatronica.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Model\PDF_Manager\Pdf_Images\Logo_UTN.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos._05_DisenoFlexionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Margin="10" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
+                <StackPanel Margin="3">
+                    <TextBlock Grid.Row="0" Text="Esfuerzos y Factor de Seguridad a falla por fatiga de flexión de dientes."
+                           FontSize="14" FontWeight="Bold"></TextBlock>
+                    <TextBlock Margin="5" FontSize="12" TextWrapping="Wrap"
+                               Text="Se evalúa si los esfuerzos en la base del diente causados por la carga puedan dañar el engranaje. En esta etapa final se necesita el parámetro del ancho de cara y selección del material."></TextBlock>
+                </StackPanel>
+            </Border>
+            
+            <Border Grid.Row="1" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Border Grid.Column="0" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Margin="6" Background="{StaticResource Gris9}">
+                                <TextBlock Text="➣ Ancho de cara." FontSize="12" FontWeight="SemiBold"></TextBlock>
+                                <StackPanel Margin="15,0,0,0" Orientation="Horizontal">
+                                    <TextBlock x:Name="AnchoDeCaraSugerido"></TextBlock>
+                                    <TextBox Width="70" Height="20" Name="AnchoCaraF" PreviewTextInput="FiltrarEntradaNumerica"></TextBox>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <Grid Grid.Row="1" Margin="6" Background="{StaticResource Gris9}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <TextBlock Grid.Row="0" Text="➣ Material." FontSize="12" FontWeight="SemiBold"></TextBlock>
+
+                                <DataGrid Margin="4" Name="ListaMateriales" Grid.Row="1"
+                                        IsReadOnly="True"
+                                        SelectionMode="Single"
+                                        SelectionUnit="FullRow"
+                                        AutoGenerateColumns="True"
+                                        SelectionChanged="SeleccionaMateriales"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ColumnWidth="*"
+                                        ></DataGrid>
+
+                                
+                            </Grid>
+
+                            <StackPanel Grid.Row="2" Margin="6" Background="{StaticResource Gris9}">
+                                <TextBlock x:Name="SeleccionMaterialText"></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text=" ‣ El esfuerzo del material seleccionado es: "></TextBlock>
+                                    <TextBox Width="70" Name="ResistenciaAGMA" PreviewTextInput="FiltrarEntradaNumerica"></TextBox>
+                                </StackPanel>
+                                <Button Content=" Calcular Factor de Seguridad " Background="{StaticResource Gris8}"
+                                        HorizontalAlignment="Right"
+                                        Click="CalcularFS"></Button>
+                            </StackPanel>
+                            
+                            
+
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="1" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="8*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Resutado en Corona" HorizontalAlignment="Center"></TextBlock>
+                                    <DataGrid Grid.Row="1" Margin="6" Name="MostrarCorona"
+                                          ColumnWidth="*"
+                                          ></DataGrid>
+
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="8*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Resutado en Piñón" HorizontalAlignment="Center" Margin="6"></TextBlock>
+                                    <DataGrid Grid.Row="1" Margin="6" Name="MostrarPinon"
+                                          ColumnWidth="*"
+                                          ></DataGrid>
+                                </Grid>
+
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
+                <StackPanel Height="20" VerticalAlignment="Center" Margin="0,0,15,0" Orientation="Horizontal" HorizontalAlignment="Right">
+
+                    <Button Content="Recalcular Factores AGMA"
+                            Margin="0,0,10,0"
+                            Width="150"
+                            Click="Regresar_Click"></Button>
+                    
+                    <Button Content="Guardar Resultados"
+                            Click="GuardarResult_Click"
+                            Width="120"
+                            Margin="0,0,10,0"></Button>
+                    
+                    <Button Content="Finalizar"
+                            Width="70"></Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

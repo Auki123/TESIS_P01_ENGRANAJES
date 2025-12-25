@@ -1,0 +1,143 @@
+﻿<Window x:Class="P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos._04_01_CalcularKb_EspersoAROView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos"
+        mc:Ignorable="d"
+        ResizeMode="NoResize" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen"
+        Title="Kb Factor de Espesor de Aro" MinHeight="470" MaxHeight="470"
+        MinWidth="460" MaxWidth="460" Icon="/Assets/Images/UI/Icon_Engrane.ico"
+        Background="{StaticResource Azul3}" >
+
+    <Grid Margin="5" Background="{StaticResource Azul10}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="15"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="10" Background="{StaticResource Gris9}">
+            <TextBlock TextWrapping="Wrap"  Margin="10" Text="Toma en cuenta situaciones donde un engranaje cuyo espesor de aro (tR) no proporciona un soporte a la raíz del diente y la falla por fatiga por flexión puede ser a travéz de aro en lugar del entalle de la raíz. Se puede calcular a partir de la geometria previamente calculada mas el diámetro de eje como parámetro de entrada."/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Background="{StaticResource Gris8}" Margin="10">
+                <Image Source="/Assets/Images/Tecnico/Engranaje_CilindricoRecto/E2_Esfuerzo_ParametroKB.png"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Margin="5"></Image>
+            </Grid>
+            
+            <StackPanel Grid.Column="1">
+                <TextBlock TextWrapping="Wrap"
+                           Margin="10"
+                           Background="{StaticResource Gris9}"
+                           Text="La AGMA define una razon de respaldo mb."
+                           ></TextBlock>
+
+                <TextBlock TextWrapping="Wrap"
+                        Margin="10"
+                        Background="{StaticResource Gris9}"
+                        Text="mb >=5 : mb = tR / ht."
+                ></TextBlock>
+
+                <StackPanel Orientation="Horizontal" Margin="10,2,10,2">
+                    <TextBlock Text="Profundidad del diente (ht) (mm):  "></TextBlock>
+                    <TextBox Name="htValue"
+                         Width="60"
+                         Height="20"
+                             IsEnabled="False"
+                        ></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10,2,10,2">
+                    <TextBlock Text="Diámetro de raíz - corona (mm):    "></TextBlock>
+                    <TextBox Name="dgiValue"
+                         Width="60"
+                         Height="20"
+                             IsEnabled="False"
+                        ></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10,2,10,2">
+                    <TextBlock Text="Diámetro de raíz - piñón   (mm):    "></TextBlock>
+                    <TextBox Name="dpiValue"
+                         Width="60"
+                         Height="20"
+                             IsEnabled="False"
+                        ></TextBox>
+                </StackPanel>
+
+
+                <TextBlock TextWrapping="Wrap"
+                     Margin="10,2,10,2"
+                     Background="{StaticResource Gris9}"
+                     Text="Parámetros de entrada: Diámetros de eje (mm)."
+                ></TextBlock>
+
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Corona:  "></TextBlock>
+                    <TextBox Name="dhgTextBox"
+                        Width="60"
+                        Height="20"
+                        PreviewTextInput="PermitirSoloNumeros"
+                        ></TextBox>
+
+                    <TextBlock Text="   Piñón :   "></TextBlock>
+                    <TextBox Name="dhpTextBox"
+                        Width="60"
+                        Height="20"
+                        PreviewTextInput="PermitirSoloNumeros"
+                        ></TextBox>
+
+                </StackPanel>
+
+                <Button Margin="10,3,10,3"
+                        HorizontalAlignment="Center"
+                        Height="20"
+                        Width="70"
+                        Content="Calcular kb "
+                        Click="calcularKB"></Button>
+
+                <StackPanel Orientation="Horizontal" Margin="10,3,10,3">
+                    <TextBlock Text="Corona:   tR:   "></TextBlock>
+                    <TextBox Name="tRcorona_TextBox"
+                        Width="60"
+                        Height="20"
+                        IsEnabled="False"
+                        ></TextBox>
+                    <TextBlock Text="   Kb:      "></TextBlock>
+                    <TextBox Name="KBcorona_TextBox"
+                        Width="60"
+                        Height="20"
+                        IsEnabled="False"
+                        ></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10,3,10,3">
+                    <TextBlock Text="Piñón:      tR:   "></TextBlock>
+                    <TextBox Name="tRpinon_TextBox"
+                        Width="60"
+                        Height="20"
+                        IsEnabled="False"
+                        ></TextBox>
+                    <TextBlock Text="   Kb:      "></TextBlock>
+                    <TextBox Name="kBpinon_TextBox"
+                        Width="60"
+                        Height="20"
+                        IsEnabled="False"
+                        ></TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Window>
