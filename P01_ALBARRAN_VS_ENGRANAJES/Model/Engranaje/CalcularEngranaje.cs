@@ -100,7 +100,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
                         localadendum = calcularAdendum(localmodulo);
                         localdedendum = calcularDedendum(localmodulo);
 
-                        localDistanciaCentros = (dp / dg) / 2;
+                        localDistanciaCentros = (dp + dg) / 2;
                         local_ht = localadendum + localdedendum;
                         localPasocircular = Math.Round(Math.PI * localmodulo, 3);
 

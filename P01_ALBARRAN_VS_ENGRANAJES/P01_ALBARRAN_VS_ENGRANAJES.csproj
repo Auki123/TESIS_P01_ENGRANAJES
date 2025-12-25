@@ -22,6 +22,7 @@
     <None Remove="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_IndiceCalidad_SegunUso.png" />
     <None Remove="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_IndiceCalidad_SegunVelocidad.png" />
     <None Remove="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_ParametroKB.png" />
+    <None Remove="Assets\Images\UI\ElementosMaquina.png" />
     <None Remove="Assets\Images\UI\Icon_Engrane.ico" />
     <None Remove="Assets\Images\UI\LogoSistema.png" />
     <None Remove="Assets\Images\UI\Logo_UTN.png" />
@@ -54,6 +55,7 @@
     <Content Include="Model\PDF_Manager\Pdf_Images\ISOA_E.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Assets\Images\UI\ElementosMaquina.png" />
     <Resource Include="Assets\Images\UI\LogoSistema.png" />
   </ItemGroup>
 

@@ -90,7 +90,7 @@
                        Source="/Assets/Images/UI/Logo_UTN.png"
                        Margin="30"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Bottom" IsEnabled="False" Opacity="0.75"/>
+                       VerticalAlignment="Bottom" IsEnabled="False" Opacity="0.75" Visibility="Hidden"/>
 
             </Grid>
 

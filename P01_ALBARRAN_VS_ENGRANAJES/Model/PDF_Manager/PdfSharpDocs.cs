@@ -24,6 +24,8 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.PDF_Manager
 
         private readonly string _miplantillaResultados;
 
+        private DateTime GuardarFecha = DateTime.Now;
+
         public PdfSharpDocs(DTO_ResultGeometrico Rgeom, DTO_ResultCargasYcinematica Rcarga, DTO_ResultFactorK_Esf R_kfactor, DTO_ResultadoDiseno Rpinon, DTO_ResultadoDiseno Rcorona)
         {
 
@@ -155,6 +157,12 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.PDF_Manager
             string cumpleAmbos = "";
             if ((_ResultDisP.FactorSeguridad >= 1 )&& (_ResultDisg.FactorSeguridad>=1)) { cumpleAmbos = "Si"; } else { cumpleAmbos = "No"; }
             grapicPage3.DrawString(cumpleAmbos, fontR, XBrushes.Black, new XPoint(147, 654.5));
+
+
+            // Fechas
+            grapicPage3.DrawString(GuardarFecha.ToString("HH'h:'mm'min'"), fontR, XBrushes.Black, new XPoint(147, 705));
+            grapicPage3.DrawString(GuardarFecha.ToShortDateString(), fontR, XBrushes.Black, new XPoint(147, 731));
+
 
             // Hoja 4, plano corona, todos los valores hasta el siguiente comentario pertenecen a la corona
 

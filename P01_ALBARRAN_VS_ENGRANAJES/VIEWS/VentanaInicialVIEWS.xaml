@@ -14,16 +14,19 @@
 
         <Grid Grid.Row="0">
 
+            <Image Source="/Assets/Images/UI/ElementosMaquina.png" Opacity="0.07"
+                />
+
             <TextBlock
-                Text="Ventana de Cálculos"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
+                Text="   CDEM   "
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
                 FontSize="40"
                 FontWeight="Regular"
-                FontFamily="Times New Roman"
+                FontFamily="Times New Roman" Opacity="0.2"
                 
-            ></TextBlock>
-            
+            />
+
         </Grid>
 
         <Grid Grid.Row="1">
