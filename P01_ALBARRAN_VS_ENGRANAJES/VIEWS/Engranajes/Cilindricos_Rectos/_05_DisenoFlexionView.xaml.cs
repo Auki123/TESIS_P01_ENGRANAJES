@@ -48,18 +48,33 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             _factoresK = DatoEsf;
 
             InicializarTextoAnchoCara();
+            // inicializa con un data grid con tabla de materiales
             datosMateriales = materiales.GetMaterialProperties();
             ListaMateriales.ItemsSource = datosMateriales;
         }
 
+        #region métodos de clase
         private void InicializarTextoAnchoCara()
         {
             double AnchoCaraMin = 8 * _datoGeometria.MODULO;
             double AnchoCaraMax = 16 * _datoGeometria.MODULO;
 
-            AnchoDeCaraSugerido.Text = "El valor debe estar entre "+AnchoCaraMin.ToString()+
+            AnchoDeCaraSugerido.Text = "Se sugiere un valor de entre "+AnchoCaraMin.ToString()+
             " y "+ AnchoCaraMax.ToString()+ " mm tomando en cuenta el diseño actual:  ";
         }
+        public void GuardarResultado()
+        {
+            PdfSharpDocs Plantilla = new PdfSharpDocs(_datoGeometria, _datosCarga, _factoresK, _ResPinon, _ResCorona);
+            PdfManager miPdfManager = new PdfManager();
+
+            PdfDocument documentoPdF = new PdfDocument();
+            documentoPdF = Plantilla.PlantillaResultados();
+
+            miPdfManager.GuardarYMostrarPdf(documentoPdF);
+        }
+        #endregion
+
+        #region eventos
 
         private void FiltrarEntradaNumerica(object sender, TextCompositionEventArgs e)
         {
@@ -67,6 +82,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             ValidarTextbox.controlEntradaTextBox(sender, e);
         }
 
+        // eventos de cálculo
         private void SeleccionaMateriales(object sender, SelectionChangedEventArgs e)
         {
             if (ListaMateriales.SelectedItem is MaterialPropertyVM seleccion)
@@ -104,24 +120,53 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             }
         }
 
+        private void CalcularKT(object sender, RoutedEventArgs e)
+        {
+            CalcularFactoresKM factoresKM = new CalcularFactoresKM();
+            ValidarEntradas validarEntradas = new ValidarEntradas();
+
+            if (validarEntradas.validarEntradaNoNull(KT_Temperaturavalue) == true)
+            {
+                double temperaturaCelcius = double.Parse(KT_Temperaturavalue.Text);
+                _factoresK.KT_FACTOR = factoresKM.CalcularKT(temperaturaCelcius);
+                KT_value.Text = _factoresK.KT_FACTOR.ToString();
+            }
+        }
+
+        private void KR_SELECTION(object sender, SelectionChangedEventArgs e)
+        {
+            double KR;
+            if (ValoresKR.SelectedItem != null)
+            {
+                if (ValoresKR.SelectedItem == value90) { KR = 0.85; }
+                else if (ValoresKR.SelectedItem == value99) { KR = 1.0; }
+                else if (ValoresKR.SelectedItem == value99_9) { KR = 1.25; }
+                else if (ValoresKR.SelectedItem == value99_99) { KR = 1.5; }
+                else { KR = 0; }
+                _factoresK.KR_FACTOR = KR;
+                KR_value.Text = KR.ToString();
+            }
+        }
+
         private void CalcularFS(object sender, RoutedEventArgs e)
         {
             ValidarEntradas validarTexbox = new ValidarEntradas();
-            if (validarTexbox.validarEntradaNoNull(AnchoCaraF, ResistenciaAGMA) == true)
+            bool datokresistcompleto = _factoresK.VeificaCompletoKresist();
+            if ((validarTexbox.validarEntradaNoNull(AnchoCaraF, ResistenciaAGMA) == true) && (datokresistcompleto == true))
             {
                 double F = double.Parse(AnchoCaraF.Text);
                 _datoGeometria.anchocaraF = F;
 
-                double sfb_prima=double.Parse(ResistenciaAGMA.Text);
+                double sfb_prima = double.Parse(ResistenciaAGMA.Text);
                 _ResCorona.Sfb_prima = sfb_prima;
-                _ResPinon.Sfb_prima= sfb_prima;
+                _ResPinon.Sfb_prima = sfb_prima;
 
                 CalcularFactoresKM calcularkm = new CalcularFactoresKM();
                 _factoresK.KM_FACTOR = calcularkm.CalcularKm(F);
 
-                CalcularEsfuerzosM calcularEsfuerzos = new CalcularEsfuerzosM(_datosCarga,_factoresK,_datoGeometria);
+                CalcularEsfuerzosM calcularEsfuerzos = new CalcularEsfuerzosM(_datosCarga, _factoresK, _datoGeometria);
                 _ResCorona.SIGMAB = calcularEsfuerzos.CalcularSigmabCorona(F);
-                _ResPinon.SIGMAB=calcularEsfuerzos.CalcularSigmabPinon(F);
+                _ResPinon.SIGMAB = calcularEsfuerzos.CalcularSigmabPinon(F);
 
                 double Sfb_real = calcularEsfuerzos.CalcularResistenciaRealMaterial(sfb_prima);
                 _ResCorona.Sfb = Sfb_real;
@@ -134,7 +179,12 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 mostrarDiseno.MostrarResultadoDiseno(_ResCorona, _ResPinon, MostrarCorona, MostrarPinon);
 
             }
+            else { MessageBox.Show("Existen campos sin completar"); }
+
         }
+
+
+        // eventos de transición y guardado
 
         private void Regresar_Click(object sender, RoutedEventArgs e)
         {
@@ -150,27 +200,14 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
         {
             PdfSharpDocs Plantilla = new PdfSharpDocs(_datoGeometria,_datosCarga,_factoresK,_ResPinon,_ResCorona);
             PdfManager miPdfManager = new PdfManager();
-
             PdfDocument documentoPdF = new PdfDocument();
             documentoPdF = Plantilla.PlantillaResultados();
-
-            miPdfManager.GuardarYMostrarPdf(documentoPdF);
-        }
-
-        public void GuardarResultado()
-        {
-            PdfSharpDocs Plantilla = new PdfSharpDocs(_datoGeometria, _datosCarga, _factoresK, _ResPinon, _ResCorona);
-            PdfManager miPdfManager = new PdfManager();
-
-            PdfDocument documentoPdF = new PdfDocument();
-            documentoPdF = Plantilla.PlantillaResultados();
-
             miPdfManager.GuardarYMostrarPdf(documentoPdF);
         }
 
         private void FinalizarTrabajo(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult resultado = MessageBox.Show("¡Está seguro de finalizar?, una vez de por terminado no podrá volver.", "Finalizar",MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            MessageBoxResult resultado = MessageBox.Show("¡Está seguro de finalizar?, una vez de por terminado no podrá volver.", "Finalizar",MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (resultado == MessageBoxResult.Yes)
             {
                 var ventanaPrincipal = Window.GetWindow(this) as MainWindow;
@@ -184,5 +221,8 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 }
             }
         }
+        #endregion
+
+        
     }
 }

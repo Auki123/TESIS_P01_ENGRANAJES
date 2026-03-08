@@ -11,7 +11,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.DTO_Objects
     {
         //Factores de esfuerzo
 
-        private int _ki = 1;
+        private int _ki = 1;      
         private double _ks = 1.25;
 
         private double _J_factorPinon;
@@ -20,10 +20,11 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.DTO_Objects
         private double _ka_factor;
         private double _kbp_factor;
         private double _kbg_factor;
-
-        private double _km_factor; //Se inicializa luego
+        
+        private double _km_factor; //único en inicializarse en la ventana _05_
 
         // Factores de resistencia de material
+
         private double _kl=1;  // Solo para E7 ciclos
         private double _kt_factor;
         private double _kr_factor;
@@ -42,12 +43,20 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.DTO_Objects
         public double KT_FACTOR { get { return _kt_factor; } set { _kt_factor = value; } }
         public double KR_FACTOR { get { return _kr_factor; } set { _kr_factor = value; } }
 
-        //Verifica si algun valor de los factores k, aun no ha sido calculado devolviendo 0 si es el caso
-        public double VeificaDatoCompleto()
+        //Verifica si algun valor de los factores k de esfuerzo, aun no ha sido calculado devolviendo 0 si es el caso
+        public bool VeificaDatoCompleto() 
         { 
-            double Valor0 = _J_factorCorona * _J_factorPinon *_kv_factor* _ka_factor * KS * KI * _kbp_factor*_kbg_factor * KL * _kt_factor * _kr_factor;
-            return Valor0;
+            double Valor0 = _J_factorCorona * _J_factorPinon *_kv_factor* _ka_factor * KS * KI * _kbp_factor*_kbg_factor;
+            if (Valor0 == 0) return false;
+            else return true;
         }
 
+        //Verifica si algun valor de los factores k de resistencia, aun no ha sido calculado devolviendo 0 si es el caso
+        public bool VeificaCompletoKresist()
+        {
+            double Valor0 = KL * _kt_factor * _kr_factor;
+            if (Valor0 == 0) return false;
+            else return true;
+        }
     }
 }

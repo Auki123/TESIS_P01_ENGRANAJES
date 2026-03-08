@@ -14,6 +14,9 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
     {
         private readonly BaseDatos MiBaseDatos = new BaseDatos();
 
+        #region Factores de la AGMA de esfuerzos
+
+        // Factor J
         public (double factorJpinon, double factorJcorona) DameFactorJ(int Np, int Ng, int anguloPresion)
         {
             double factorJpinon = 0;
@@ -27,36 +30,47 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
         public double CalcularKv(double velocidadPaso, int IcalidadQv)
         {
             double KvFactorCalculated = 0;
-            double LocalCalidadQv=0;
+            double LocalCalidadQv = 0;
 
-            if (velocidadPaso <= 50.8)
+            if (IcalidadQv >= 6 && IcalidadQv <= 14)
             {
-                if (IcalidadQv >= 6 && IcalidadQv <= 14) { LocalCalidadQv = IcalidadQv; }
-                else if (IcalidadQv >= 3 && IcalidadQv <= 5) { LocalCalidadQv = 4; }
-                else { MessageBox.Show("Valor Inconsistente de Qv"); }
+                LocalCalidadQv = IcalidadQv;
+            }
+            else if (IcalidadQv >= 3 && IcalidadQv <= 5)
+            {
+                LocalCalidadQv = 4;
+            }
+            else
+            { MessageBox.Show("Valor Inconsistente de Qv"); }
 
-                if ((velocidadPaso <= 13 && LocalCalidadQv == 4) || (velocidadPaso <= 19.8 && LocalCalidadQv == 6) ||
-                    (velocidadPaso <= 23.8 && LocalCalidadQv == 7) || (velocidadPaso <= 28.8 && LocalCalidadQv == 8) ||
-                    (velocidadPaso <= 34.4 && LocalCalidadQv == 9) || (velocidadPaso <= 41.2 && LocalCalidadQv == 10) ||
-                    (velocidadPaso <= 50.8 && LocalCalidadQv == 11))
+
+            if ((LocalCalidadQv >= 4) && (LocalCalidadQv <= 14))
+            {
+                if (velocidadPaso <= 50.8)
                 {
-                    double B = Math.Pow(12 - LocalCalidadQv, 2.0 / 3.0) / 4.0;
-                    double A = 50 + 56 * (1 - B);
-                    KvFactorCalculated = Math.Pow(A / (A + Math.Sqrt(200 * velocidadPaso)), B);
+                    if ((velocidadPaso <= 13 && LocalCalidadQv == 4) || (velocidadPaso <= 19.8 && LocalCalidadQv == 6) ||
+                        (velocidadPaso <= 23.8 && LocalCalidadQv == 7) || (velocidadPaso <= 28.8 && LocalCalidadQv == 8) ||
+                        (velocidadPaso <= 34.4 && LocalCalidadQv == 9) || (velocidadPaso <= 41.2 && LocalCalidadQv == 10) ||
+                        (velocidadPaso <= 50.8 && LocalCalidadQv == 11))
+                    {
+                        double B = Math.Pow(12 - LocalCalidadQv, 2.0 / 3.0) / 4.0;
+                        double A = 50 + 56 * (1 - B);
+                        KvFactorCalculated = Math.Pow(A / (A + Math.Sqrt(200 * velocidadPaso)), B);
+                    }
+                    else if (LocalCalidadQv > 11 && LocalCalidadQv <= 14) { KvFactorCalculated = 0.95; }
+                    else
+                    {
+                        KvFactorCalculated = 0;
+                        MessageBox.Show("La fabricación del Engranaje No puede ser de esta Calidad.");
+                    }
                 }
-                else if ((LocalCalidadQv > 11 && LocalCalidadQv <= 14) && velocidadPaso <= 50.8) { KvFactorCalculated = 0.95; }
                 else
                 {
-                    KvFactorCalculated = 0;
-                    MessageBox.Show("La fabricación del Engranaje No puede ser de esta Calidad.");
-                }
-            }
-            else {
-                MessageBox.Show("Velocidad en línea de paso fuera de rango");
-            }
+                    MessageBox.Show("Velocidad en línea de paso fuera de rango");
+                }       
 
+            }
             return Math.Round(KvFactorCalculated, 3);
-       
         }
 
 
@@ -104,17 +118,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
         
         }
 
-        public double CalcularKT(double TemperaturaCelcius)
-        {
-            double KT = 0;
-            if (TemperaturaCelcius >= 0 && TemperaturaCelcius <= 121.111)
-            { KT = 1;}
-            else if (TemperaturaCelcius > 121.111)
-            { KT = ((492 + 1.8 * TemperaturaCelcius) / (620)); }
-            else {  KT = 0;}
-            return Math.Round((double)KT,3);
-        }
-
+        // Calcula Factor km de distribución de carga
         public double CalcularKm(double F)
         {
             double Km = 0;
@@ -126,6 +130,27 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
 
         }
 
-        // El factor ka, Kr, y otros no necesitan métodos de cálculo, solo es selección
+        // Factor Ka se obtiene directo de la base de datos
+        // Factor ks y Ki ya tiene asignado un valor
+
+        #endregion
+
+        #region Factores de la AGMA, de resistencia de material
+        public double CalcularKT(double TemperaturaCelcius)
+        {
+            // definida solo para los aceros
+            double KT = 0;
+            if (TemperaturaCelcius >= 0 && TemperaturaCelcius <= 121.111)
+            { KT = 1;}
+            else if (TemperaturaCelcius > 121.111)
+            { KT = ((492 + 1.8 * TemperaturaCelcius) / (620)); }
+            else {  KT = 0;}
+            return Math.Round((double)KT,3);
+        }
+
+        // Factor KR se realiza directo
+        // Factor KL, establecido para e7 ciclos y es 1
+        #endregion
+
     }
 }

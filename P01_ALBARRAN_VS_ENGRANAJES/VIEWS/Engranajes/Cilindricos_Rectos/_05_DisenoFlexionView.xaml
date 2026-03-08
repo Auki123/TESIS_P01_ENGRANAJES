@@ -22,20 +22,20 @@
                                Text="Se evalúa si los esfuerzos en la base del diente causados por la carga puedan dañar el engranaje. En esta etapa final se necesita el parámetro del ancho de cara y selección del material."></TextBlock>
                 </StackPanel>
             </Border>
-            
+
             <Border Grid.Row="1" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <Border Grid.Column="0" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"/>
-                                <RowDefinition Height="3*"/>
                                 <RowDefinition Height="*"/>
+                                <RowDefinition Height="1.4*"/>
                             </Grid.RowDefinitions>
 
                             <StackPanel Grid.Row="0" Margin="6" Background="{StaticResource Gris9}">
@@ -45,13 +45,13 @@
                                     <TextBox Width="70" Height="20" Name="AnchoCaraF" PreviewTextInput="FiltrarEntradaNumerica"></TextBox>
                                 </StackPanel>
                             </StackPanel>
-                            
+
                             <Grid Grid.Row="1" Margin="6" Background="{StaticResource Gris9}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                
+
                                 <TextBlock Grid.Row="0" Text="➣ Material." FontSize="12" FontWeight="SemiBold"></TextBlock>
 
                                 <DataGrid Margin="4" Name="ListaMateriales" Grid.Row="1"
@@ -65,21 +65,52 @@
                                         ColumnWidth="*"
                                         ></DataGrid>
 
-                                
+
                             </Grid>
 
                             <StackPanel Grid.Row="2" Margin="6" Background="{StaticResource Gris9}">
                                 <TextBlock x:Name="SeleccionMaterialText"></TextBlock>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text=" ‣ El esfuerzo del material seleccionado es: "></TextBlock>
+                                    <TextBlock Text=" ‣ La resistencia del material seleccionado es: "></TextBlock>
                                     <TextBox Width="70" Name="ResistenciaAGMA" PreviewTextInput="FiltrarEntradaNumerica"></TextBox>
+                                    <TextBlock Text=" MPa. "></TextBlock>
                                 </StackPanel>
+
+                                <TextBlock Margin="10" Text="Factores de resistencia de la AGMA" FontWeight="SemiBold"></TextBlock>
+
+                                <StackPanel Orientation="Horizontal" Margin="10,0,10,2">
+                                    <TextBlock Text="➣ Factor de vida KL:    " FontWeight="SemiBold" FontSize="12"></TextBlock>
+                                    <TextBlock Text=" Se define para E7 ciclos: KL =1"></TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="10,2,0,0">
+                                    <TextBlock Text="➣ Factor de Temperatura KT:" FontWeight="SemiBold" FontSize="12"></TextBlock>
+                                    <TextBlock Text="Temperatura °C:   " FontSize="12" Margin="15,0,0,0"></TextBlock>
+                                    <TextBox Width="40" Name="KT_Temperaturavalue" PreviewTextInput="FiltrarEntradaNumerica"></TextBox>
+                                    <Button Width="50" Click="CalcularKT" Content="Calcular " Margin="15,0,10,0"></Button>
+                                    <TextBox Width="60" Name="KT_value" IsEnabled="False"></TextBox>
+                                </StackPanel>
+                                
+                                <StackPanel Orientation="Horizontal" Margin="10,2,0,0">
+                                    <TextBlock Text="➣ Factor de Confiabiidad KR:     " FontWeight="SemiBold" FontSize="12"></TextBlock>
+                                    <ComboBox Width="70" SelectionChanged="KR_SELECTION" Name="ValoresKR">
+                                        <ComboBoxItem Name="value90" Content="90,00%"></ComboBoxItem>
+                                        <ComboBoxItem Name="value99" Content="99,00%"></ComboBoxItem>
+                                        <ComboBoxItem Name="value99_9" Content="99,90%"></ComboBoxItem>
+                                        <ComboBoxItem Name="value99_99" Content="99,99%"></ComboBoxItem>
+                                    </ComboBox>
+
+                                    <TextBox Width="60" IsEnabled="False" Margin="20,0,0,0"
+                                        Name="KR_value"></TextBox>
+                                </StackPanel>
+
+
                                 <Button Content=" Calcular Factor de Seguridad " Background="{StaticResource Gris8}"
                                         HorizontalAlignment="Right"
                                         Click="CalcularFS"></Button>
                             </StackPanel>
-                            
-                            
+
+
 
                         </Grid>
                     </Border>
@@ -120,6 +151,7 @@
                     </Border>
                 </Grid>
             </Border>
+            
             <Border Grid.Row="2" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
                 <StackPanel Height="20" VerticalAlignment="Center" Margin="0,0,15,0" Orientation="Horizontal" HorizontalAlignment="Right">
 

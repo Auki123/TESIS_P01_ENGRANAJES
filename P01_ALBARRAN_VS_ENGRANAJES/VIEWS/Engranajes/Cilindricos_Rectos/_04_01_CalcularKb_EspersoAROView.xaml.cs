@@ -25,7 +25,6 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
         DTO_ResultGeometrico _ValoresGeometricos = new DTO_ResultGeometrico();
         private readonly Action<double, double> _MetodoReasignaValorKB;
 
-        double ht = 0; // El valor ht se calcual a partir de la geometría, asi que debe inicializarse
         public _04_01_CalcularKb_EspersoAROView(DTO_ResultGeometrico MIRESULTADO, Action<double, double> AsignarKB)
         {
             InitializeComponent();

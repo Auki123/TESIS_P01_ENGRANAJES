@@ -30,7 +30,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
         // _DTO_ValoresK, se agregará valores en esta ventana de cálculo
         private DTO_ResultFactorK_Esf _DTO_ValoresK = new DTO_ResultFactorK_Esf();
 
-        //Metodos para reasignacion de valor desde ventana nueva 
+        #region Metodos para reasignacion de valor desde ventana nueva, activación desde delegados
         private void AsignarValorKV(double valor)
         {
             _DTO_ValoresK.KV_FACTOR = valor;
@@ -50,10 +50,12 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             _DTO_ValoresK.KA_FACTOR = valor;
             Ka_value.Text = _DTO_ValoresK.KA_FACTOR.ToString();
         }
+        #endregion
 
         //.............................................................
 
 
+        // Constructor
 
         public _04_FactoresK_EsfuerzoVIEW(DTO_ResultGeometrico dTO_ResultGeometrico, DTO_ResultCargasYcinematica dTO_ResultCargas)
         {
@@ -62,6 +64,10 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             _DatosDeCargas = dTO_ResultCargas;
         }
 
+
+        #region Eventons para llamar a método de cálculo de factores k de la AGMA de esfuerzo
+
+        // factor geompetrico
         private void CalcularJ(object sender, RoutedEventArgs e)
         {
             CalcularFactoresKM calcularFactoresKM = new CalcularFactoresKM();
@@ -70,6 +76,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             Jfactor_corona.Text = _DTO_ValoresK.J_FACTORCORONA.ToString();
         }
 
+        // factor dinámico
         private void Ir_A_CalcularKv(object sender, RoutedEventArgs e)
         {
             _04_01_CalcularKvModel VentanaCalcularKV = new _04_01_CalcularKvModel(_DatosDeCargas, AsignarValorKV);
@@ -77,57 +84,30 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
 
         }
 
+        // factor de espesor de aro
         private void Ir_A_CalcularKB(object sender, RoutedEventArgs e)
         {
             _04_01_CalcularKb_EspersoAROView VentanaCalcularKB = new _04_01_CalcularKb_EspersoAROView(_DatosGeometricos,AsignarValorKB);
             bool? ResultadoCompeto = VentanaCalcularKB.ShowDialog();
         }
 
+
+        // factor de aplicación
         private void Ir_A_CalcularKa(object sender, RoutedEventArgs e)
         {
             _04_03_CalcularKa_AplicacionView VentanaCalcularKa = new _04_03_CalcularKa_AplicacionView(AsignarValorKa);
             bool? Resultadoka = VentanaCalcularKa.ShowDialog();
         }
 
-        private void ValidarEntradaTemp(object sender, TextCompositionEventArgs e)
-        {
-            ValidarEntradas ControlEntradaTextBox = new ValidarEntradas();
-            ControlEntradaTextBox.controlEntradaTextBox(sender,e);
-        }
 
-        private void Ir_A_CalcularKT(object sender, RoutedEventArgs e)
-        {
-            CalcularFactoresKM factoresKM = new CalcularFactoresKM();
-            ValidarEntradas validarEntradas = new ValidarEntradas();
+        #endregion
 
-            if (validarEntradas.validarEntradaNoNull(KT_Temperaturavalue) ==true)
-            {
-                double temperaturaCelcius = double.Parse(KT_Temperaturavalue.Text);
-                _DTO_ValoresK.KT_FACTOR = factoresKM.CalcularKT(temperaturaCelcius);
-                KT_value.Text=_DTO_ValoresK.KT_FACTOR.ToString();
-            }
-        }
-
-        private void KR_SELECTION(object sender, SelectionChangedEventArgs e)
-        {
-            double KR;
-            if (ValoresKR.SelectedItem != null) 
-            {
-                if (ValoresKR.SelectedItem == value90){ KR = 0.85; }
-                else if (ValoresKR.SelectedItem == value99) { KR = 1.0; }
-                else if (ValoresKR.SelectedItem == value99_9) { KR = 1.25; }
-                else if (ValoresKR.SelectedItem == value99_99) { KR = 1.5; }
-                else { KR = 0; }
-                _DTO_ValoresK.KR_FACTOR = KR;
-                KR_value.Text = KR.ToString();
-            }
-        }
-
+        #region Eventos de transición de vistas
         private void Ir_A_CalcularEsfuerzo(object sender, RoutedEventArgs e)
         {
-            double VerificarSiHayValor0;
-            VerificarSiHayValor0 = _DTO_ValoresK.VeificaDatoCompleto();
-            if (VerificarSiHayValor0 != 0)
+            bool DatoCompleto;
+            DatoCompleto = _DTO_ValoresK.VeificaDatoCompleto();
+            if (DatoCompleto==true)
             {
                 var ventanaPrincipal = Window.GetWindow(this) as MainWindow;
 
@@ -151,5 +131,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 ventanaPrincipal.windowsOperation.Content = new _03_CalculoReaccionesVIEW(_DatosGeometricos);
             }
         }
+
+        #endregion
     }
 }

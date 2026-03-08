@@ -1,0 +1,8 @@
+This application uses the following third-party libraries:
+
+- ScottPlot (MIT License)
+- ScottPlot.WPF (MIT License)
+- PdfSharpCore (MIT License)
+- Microsoft.Data.Sqlite (MIT License)
+
+Copyright © respective authors.

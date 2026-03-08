@@ -13,16 +13,16 @@
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="10" FontSize="14">    
-                <Run Text="Factores K de esfuerzo y de Resistencia de Materiales:" FontWeight="Bold"/>
+                <Run Text="Factores de la AGMA" FontWeight="Bold"/>
             <LineBreak/>
-                <Run Text="Los factores K, modifican el valor del esfuerzo que sufre el material, y también modifica el valor de la resistencia segun el entorno. Vea el manual para identificar el procedimiento de cálculo."/>
+                <Run Text="Modifican el valor del esfuerzo al que se somete el elemento, o el valor de la resistencia del material dependiendo del entorno de operación."/>
         </TextBlock>
 
         <!--Aqui defino la ventana de operaciones-->
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
@@ -82,39 +82,6 @@
 
             </StackPanel>
             
-            <StackPanel Grid.Column="1">
-                <TextBlock Text="Factores K de Resistencia:" FontWeight="Bold" FontSize="14"></TextBlock>
-
-                <StackPanel Orientation="Horizontal" Margin="10">
-                    <TextBlock Text="➣ Factor de vida KL:    " FontWeight="SemiBold" FontSize="12"></TextBlock>
-                    <TextBlock Text=" Se define para E7 ciclos: KL =1"></TextBlock>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                    <TextBlock Text="➣ Factor de Temperatura KT:        " FontWeight="SemiBold" FontSize="12"></TextBlock>
-                    <TextBox Width="60" Name="KT_value" IsEnabled="False"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10">
-                    <TextBlock Text="Temperatura del lubricante °C:   " FontSize="12" Margin="15,0,0,0"></TextBlock>
-                    <TextBox Width="60" Name="KT_Temperaturavalue" PreviewTextInput="ValidarEntradaTemp"></TextBox>
-                    <TextBlock Text="--->" FontSize="13"></TextBlock>
-                    <Button Width="50" Click="Ir_A_CalcularKT" Content="Calcular "></Button>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Margin="10">
-                    <TextBlock Text="➣ Factor de Confiabiidad KR:        " FontWeight="SemiBold" FontSize="12"></TextBlock>
-                    <ComboBox Width="70" SelectionChanged="KR_SELECTION" Name="ValoresKR">
-                        <ComboBoxItem Name="value90" Content="90,00%"></ComboBoxItem>
-                        <ComboBoxItem Name="value99" Content="99,00%"></ComboBoxItem>
-                        <ComboBoxItem Name="value99_9" Content="99,90%"></ComboBoxItem>
-                        <ComboBoxItem Name="value99_99" Content="99,99%"></ComboBoxItem>
-                    </ComboBox>
-
-                    <TextBlock Text="   ." FontSize="13"></TextBlock>
-                    <TextBox Width="60" IsEnabled="False"
-                             Name="KR_value"></TextBox>
-                </StackPanel>
-            </StackPanel>
             
         </Grid>
 
