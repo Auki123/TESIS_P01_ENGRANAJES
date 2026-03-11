@@ -6,6 +6,7 @@ using P01_ALBARRAN_VS_ENGRANAJES.VIEWS;
 using P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos;
 using P01_ALBARRAN_VS_ENGRANAJES.VIEWS.VentanasUI;
 using System.Windows;
+using P01_ALBARRAN_VS_ENGRANAJES.VIEWS.CalculadoraEcuaciones;
 using PdfSharpCore.Pdf;
 
 namespace P01_ALBARRAN_VS_ENGRANAJES
@@ -115,7 +116,14 @@ namespace P01_ALBARRAN_VS_ENGRANAJES
 
         private void VentanaCalculadora_Click(object sender, RoutedEventArgs e)
         {
+            CalculadoraEcuacionesVIEW miCalculadora = new CalculadoraEcuacionesVIEW();
+            miCalculadora.Show();
+        }
 
+        private void Nuevo_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow NuevaVentana = new MainWindow();
+            NuevaVentana.Show();
         }
     }
 

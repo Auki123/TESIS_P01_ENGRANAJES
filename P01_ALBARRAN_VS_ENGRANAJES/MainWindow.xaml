@@ -33,6 +33,7 @@
             <Menu Grid.Column="0">
                 <MenuItem Header=" ARCHIVO">
                     <MenuItem Header="Calculadora de Ecuaciones" Click="VentanaCalculadora_Click"></MenuItem>
+                    <MenuItem Header="Nuevo" Click="Nuevo_Click"></MenuItem>
                     <MenuItem Header="Guardar" Click="GuardarDatos_Click"></MenuItem>
                 </MenuItem>
             </Menu>

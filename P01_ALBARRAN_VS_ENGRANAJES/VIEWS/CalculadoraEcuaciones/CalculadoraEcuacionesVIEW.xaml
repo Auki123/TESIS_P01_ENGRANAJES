@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P01_ALBARRAN_VS_ENGRANAJES.VIEWS.CalculadoraEcuaciones"
         mc:Ignorable="d"
-        Title="Calculadora de Ecuaciones" Height="450" Width="800">
-    <Grid>
+        Title="Calculadora de Ecuaciones" Height="450" Width="800"
+        Icon="/Assets/Images/UI/Icon_Engrane.ico">
+    <Grid Background="{StaticResource Azul2}">
         
+        <Grid Margin="5" x:Name="CalculadoraContenido" Background="{StaticResource Azul10}"></Grid>
     </Grid>
 </Window>
