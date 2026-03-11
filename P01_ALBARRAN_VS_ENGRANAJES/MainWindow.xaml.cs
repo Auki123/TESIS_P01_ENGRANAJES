@@ -113,6 +113,11 @@ namespace P01_ALBARRAN_VS_ENGRANAJES
             }
         }
 
+        private void Nuevo_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow nuevaVentana = new MainWindow();
+            nuevaVentana.Show();
+        }
     }
 
 }
