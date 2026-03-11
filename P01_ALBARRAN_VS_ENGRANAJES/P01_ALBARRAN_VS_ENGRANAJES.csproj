@@ -84,4 +84,8 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="VIEWS\CalculadoraEcuaciones\EngranajesCilindricosRectos\" />
+  </ItemGroup>
+
 </Project>

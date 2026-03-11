@@ -113,6 +113,10 @@ namespace P01_ALBARRAN_VS_ENGRANAJES
             }
         }
 
+        private void VentanaCalculadora_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
