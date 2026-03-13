@@ -91,23 +91,63 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
                         }
                     }
 
+                    
+
                     if (posiblesValoresNp.Count != 0)
                     {
-                        localNp = posiblesValoresNp.Min();
-                        localmodulo = dp / localNp;
-                        localNg = (int)Math.Round(dg / localmodulo, 0);
-                        local_m_p = CalcularRelacionContacto(localmodulo, dp, dg, anguloPresion);
-                        localadendum = calcularAdendum(localmodulo);
-                        localdedendum = calcularDedendum(localmodulo);
+                        List <int> posibleNpReal = new List<int>();
 
-                        localDistanciaCentros = (dp + dg) / 2;
-                        local_ht = localadendum + localdedendum;
-                        localPasocircular = Math.Round(Math.PI * localmodulo, 3);
+                        for (int i = 0; i < posiblesValoresNp.Count; i++)
+                        {
+                            localNp = posiblesValoresNp[i];
+                            localmodulo = dp / localNp;
+                            localNg = (int)(dg / localmodulo);
 
-                        local_deg = dg+2*localadendum;
-                        local_dig = dg-2*localdedendum;
-                        local_dep = dp + 2*localadendum;
-                        local_dip = dp - 2*localdedendum;
+                            if ((localNp > 14 && localNp < 17 && localNg > 14 && localNg < 17) ||
+                                (localNp > 17 && localNp < 21 && localNg > 17 && localNg < 21) ||
+                                (localNp > 21 && localNp < 26 && localNg > 21 && localNg < 26) ||
+                                (localNp > 26 && localNp < 35 && localNg > 26 && localNg < 35) ||
+                                (localNp > 35 && localNp < 55 && localNg > 35 && localNg < 55) ||
+                                (localNp > 55 && localNp < 135 && localNg > 55 && localNg < 135))
+                            {
+                                // No hace nada
+                            }
+                            else
+                            {
+                                posibleNpReal.Add(localNp);
+                            }
+
+                        }
+
+                        if (posibleNpReal.Count != 0)
+
+                        {
+
+                            localNp = posibleNpReal.Min();
+                            localmodulo = dp / localNp;
+                            localNg = (int)(dg / localmodulo);
+                            local_m_p = CalcularRelacionContacto(localmodulo, dp, dg, anguloPresion);
+                            localadendum = calcularAdendum(localmodulo);
+                            localdedendum = calcularDedendum(localmodulo);
+
+                            localDistanciaCentros = (dp + dg) / 2;
+                            local_ht = localadendum + localdedendum;
+                            localPasocircular = Math.Round(Math.PI * localmodulo, 3);
+
+                            local_deg = dg + 2 * localadendum;
+                            local_dig = dg - 2 * localdedendum;
+                            local_dep = dp + 2 * localadendum;
+                            local_dip = dp - 2 * localdedendum;
+                        }
+                        else
+                        
+                        {
+                            localNp = posiblesValoresNp.Min();
+                            localmodulo = dp / localNp;
+                            localNg = (int)(dg / localmodulo);
+                            MessageBox.Show("Diseño inválido, delimitado por la tabla de factor geométrico: "+ "Np: "+localNp+". Ng: "+localNg);
+                            
+                        }
 
                     }
                     else

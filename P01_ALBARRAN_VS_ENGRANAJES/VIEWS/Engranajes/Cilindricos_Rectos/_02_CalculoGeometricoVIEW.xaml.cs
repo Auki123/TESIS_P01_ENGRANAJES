@@ -74,16 +74,20 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
 
         private void Continuar(object sender, RoutedEventArgs e)
         {
-            if (_resultadoG.NP!=0)
+            if (_resultadoG.RELACIONCONTACTO != 0)
             {
                 var ventanaPrincipal = Window.GetWindow(this) as MainWindow;
 
                 _03_CalculoReaccionesVIEW SiguenteUserC = new _03_CalculoReaccionesVIEW(_resultadoG);
-                
+
                 if (ventanaPrincipal != null)
                 {
                     ventanaPrincipal.windowsOperation.Content = SiguenteUserC;
                 }
+            }
+            else
+            {
+                MessageBox.Show("El diseñó no cumple con condiciones requeridas.");
             }
         }
 

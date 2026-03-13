@@ -106,7 +106,7 @@
 
         <Grid Grid.Row="3" Background="{StaticResource Gris9}">
             <Viewbox Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <TextBlock Text="  © 2025 Universidad Técnica del Norte. Todos los derechos reservados."
+                <TextBlock Text="  © 2026 Universidad Técnica del Norte. Todos los derechos reservados."
                TextAlignment="Center"
                VerticalAlignment="Center"
                HorizontalAlignment="Left"
