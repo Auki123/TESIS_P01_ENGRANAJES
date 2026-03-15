@@ -78,6 +78,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                     ventanaPrincipal.windowsOperation.Content = userControl_KFACTOR;
                 }
             }
+            
         }
 
         private void Regresar_Click(object sender, RoutedEventArgs e)

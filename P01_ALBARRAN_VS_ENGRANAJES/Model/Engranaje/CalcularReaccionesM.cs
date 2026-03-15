@@ -39,11 +39,14 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
                     resultCargasYcinematica.TORQUEPINON = CalcularTorque(PotenciaHP, VangularPinonRPM);
                     resultCargasYcinematica.TORQUECORONA = CalcularTorque(PotenciaHP, resultCargasYcinematica.VANGULARCORONA);
 
-                    resultCargasYcinematica.WAXIALPINON = CalcularCargaAxial(resultCargasYcinematica.TORQUEPINON, DP);
+                    // La magnitud de la carga axial, refleja los mismos valores para los dos elementos, aunque se puede calcular independiente para los 2.
                     resultCargasYcinematica.WAXIALCORONA = CalcularCargaAxial(resultCargasYcinematica.TORQUECORONA, DG);
+                    resultCargasYcinematica.WAXIALPINON = resultCargasYcinematica.WAXIALCORONA;
 
-                    resultCargasYcinematica.WRADIALPINON = CalcularCargaRadial(resultCargasYcinematica.WAXIALPINON, anguloPresion);
+
+                    // La magnitud de la carga radial, refleja los mismos valores para los dos elementos, aunque se puede calcular independiente para los 2.
                     resultCargasYcinematica.WRADIALCORONA = CalcularCargaRadial(resultCargasYcinematica.WAXIALCORONA, anguloPresion);
+                    resultCargasYcinematica.WRADIALPINON = resultCargasYcinematica.WRADIALCORONA;
                 }
 
                 else
