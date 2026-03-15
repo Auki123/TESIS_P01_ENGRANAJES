@@ -43,6 +43,8 @@
                                 <StackPanel Margin="15,0,0,0" Orientation="Horizontal">
                                     <TextBlock x:Name="AnchoDeCaraSugerido"></TextBlock>
                                     <TextBox Width="70" Height="20" Name="AnchoCaraF" PreviewTextInput="FiltrarEntradaNumerica"></TextBox>
+                                    <TextBlock Text="    Entonces: Km:   "></TextBlock>
+                                    <TextBox Width="70" Height="20" IsEnabled="False" Name="ValorKm_box"></TextBox>
                                 </StackPanel>
                             </StackPanel>
 

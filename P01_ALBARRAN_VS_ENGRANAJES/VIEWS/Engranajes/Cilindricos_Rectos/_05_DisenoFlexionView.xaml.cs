@@ -163,6 +163,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
 
                 CalcularFactoresKM calcularkm = new CalcularFactoresKM();
                 _factoresK.KM_FACTOR = calcularkm.CalcularKm(F);
+                ValorKm_box.Text = _factoresK.KM_FACTOR.ToString();
 
                 CalcularEsfuerzosM calcularEsfuerzos = new CalcularEsfuerzosM(_datosCarga, _factoresK, _datoGeometria);
                 _ResCorona.SIGMAB = calcularEsfuerzos.CalcularSigmabCorona(F);
