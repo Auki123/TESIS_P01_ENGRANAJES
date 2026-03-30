@@ -39,27 +39,11 @@ namespace P01_ALBARRAN_VS_ENGRANAJES
         }
 
 
-        #region Control de transición de userControls
-
-        // método para resetear o que vuelva al estado inicial de los DTOs
-        public void ResetDTOs()
-        {
-            R_GREOMETRICO = new DTO_ResultGeometrico();
-            R_CARGAS = new DTO_ResultCargasYcinematica();
-            R_FactorK_Esf = new DTO_ResultFactorK_Esf();
-            R_Diseno = new DTO_ResultadoDiseno();
-        }
-
-
-        #endregion
-
-
-
         private void ir_Click(object sender, RoutedEventArgs e)
         {
             if (windowsOperation.Content is not VentanaInicialVIEWS)
             {
-                MessageBoxResult resultado = MessageBox.Show("¿Está seguro que desea comenzar de nuevo?", "Advertencia",MessageBoxButton.YesNo);
+                MessageBoxResult resultado = MessageBox.Show("¿Está seguro que desea comenzar de nuevo?", "Advertencia",MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (resultado==MessageBoxResult.Yes) {
 
@@ -104,12 +88,12 @@ namespace P01_ALBARRAN_VS_ENGRANAJES
 
             else if (windowsOperation.Content is VentanaInicialVIEWS)
             {
-                MessageBox.Show("No tiene ningun trabajo para guardar. ","Error",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                MessageBox.Show("No se ha generado un trabajo. No es posible realizar el guardado.","Nada para guardar",MessageBoxButton.OK,MessageBoxImage.Error);
             }
 
             else
             {
-                MessageBox.Show("El proceso de cálculo sigue incompleto, debe concluir con su trabajo. ", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("El proceso de cálculo sigue incompleto, debe concluir con su trabajo. ", "Trabajo incompleto", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

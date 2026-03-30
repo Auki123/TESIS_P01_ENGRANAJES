@@ -35,13 +35,13 @@
                 <TextBlock TextWrapping="Wrap" Margin="10" FontSize="14">
                         <Run Text="Consideraciones de diseño para engranajes Cilíndricos Rectos:" FontWeight="Bold"/>
                     <LineBreak/>
-                        <Run Text="   • Para par de engranajes y dientes de involuta."/>
+                        <Run Text="   ▪ Para par de engranajes y dientes de involuta."/>
                     <LineBreak/>
-                        <Run Text="   • Dientes de profundidad total."/>
+                        <Run Text="   ▪ Dientes de profundidad total."/>
                     <LineBreak/>
-                        <Run Text="   • Dinetes con carga en el HPSTC."/>
+                        <Run Text="   ▪ Dinetes con carga en el HPSTC."/>
                     <LineBreak/>
-                        <Run Text="   • Basado en la metodología AGMA presentada en Norton"/>
+                        <Run Text="   ▪ Basado en la metodología AGMA presentada en Norton"/>
                     
                 </TextBlock>
 

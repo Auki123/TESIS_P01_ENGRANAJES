@@ -119,7 +119,10 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 }
 
             }
-            else { MessageBox.Show("Todavía hay campos incompletos."); }
+            else
+            {
+                MessageBox.Show("No es posible continuar. No se ha realizado todo el cálculo, o el resultado no es válido.", "Acción no disponible", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Regresar_Click(object sender, RoutedEventArgs e)

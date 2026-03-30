@@ -34,6 +34,10 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             InitializeComponent();
             _DatoGeometrico= Dato_Geometrico;
 
+            // Para mostrar resultados en un dataGRID,  AL INICIO MUESTRA CON DATOS VACÍOS
+            MostrarResultados MostrarCargasCalc = new MostrarResultados();
+            MostrarCargasCalc.mostrarResultadoCargas(_ResultadoCalcularCarga, MostrarCargasEnPinon, MostrarCargasEnCorona);
+
         }
 
         private void ControlEntradaTexBox(object sender, TextCompositionEventArgs e)
@@ -48,17 +52,22 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
         private void CalcularParámetrosDinámicos(object sender, RoutedEventArgs e)
         {
             ValidarEntradas validarNoNull = new ValidarEntradas();
-            if (validarNoNull.validarEntradaNoNull(EntradaPotencia,EntradaVangular) == true)
+            if (validarNoNull.validarEntradaNoNull(EntradaPotencia, EntradaVangular) == true)
             {
                 double Potencia = double.Parse(EntradaPotencia.Text);
-                double Vangular= double.Parse(EntradaVangular.Text);
+                double Vangular = double.Parse(EntradaVangular.Text);
 
                 CalcularReaccionesM reaccionesM = new CalcularReaccionesM();
-                _ResultadoCalcularCarga = reaccionesM.CalcularCargasyCinematica(_DatoGeometrico,Vangular,Potencia);
+                _ResultadoCalcularCarga = reaccionesM.CalcularCargasyCinematica(_DatoGeometrico, Vangular, Potencia);
 
                 MostrarResultados MostrarCargasCalc = new MostrarResultados();
-                MostrarCargasCalc.mostrarResultadoCargas(_ResultadoCalcularCarga,MostrarCargasEnPinon,MostrarCargasEnCorona);
+                MostrarCargasCalc.mostrarResultadoCargas(_ResultadoCalcularCarga, MostrarCargasEnPinon, MostrarCargasEnCorona);
 
+            }
+
+            else 
+            {
+                MessageBox.Show("Faltan datos. Complete los campos requeridos", "Datos incompletos", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }
@@ -67,7 +76,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
         //Evento de cambio de user control
         private void ContinuarAFactoresK(object sender, RoutedEventArgs e)
         {
-            if (_ResultadoCalcularCarga.TORQUECORONA != 0)
+            if (_ResultadoCalcularCarga.TORQUECORONA != 0)         // solo para verificar si se ha hecho el cálculo y poder pasar a la siguiente acción
             {
                 var ventanaPrincipal = Window.GetWindow(this) as MainWindow;
 
@@ -77,6 +86,10 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 {
                     ventanaPrincipal.windowsOperation.Content = userControl_KFACTOR;
                 }
+            }
+            else
+            {
+                MessageBox.Show("No es posible continuar. No se ha realizado el cálculo, o el resultado no es válido.", "Acción no disponible", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }

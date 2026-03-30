@@ -45,7 +45,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
         private void calcularKB(object sender, RoutedEventArgs e)
         {
             ValidarEntradas ValidarNulidad = new ValidarEntradas();
-            if (ValidarNulidad.validarEntradaNoNull(dhgTextBox,dhpTextBox) == true)
+            if (ValidarNulidad.validarEntradaNoNull(dhgTextBox, dhpTextBox) == true)
             {
                 double dhg_value = double.Parse(dhgTextBox.Text);
                 double dhp_value = double.Parse(dhpTextBox.Text);
@@ -61,14 +61,18 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 double kBcorona;
                 double kBpinon;
 
-                (tRcorona, tRpinon,kBcorona,kBpinon) = calcularKb.CalcularKB(_ValoresGeometricos.H_T,_ValoresGeometricos.DIp, _ValoresGeometricos.DIg,dhp_value,dhg_value);
-                _MetodoReasignaValorKB(kBpinon,kBcorona);
+                (tRcorona, tRpinon, kBcorona, kBpinon) = calcularKb.CalcularKB(_ValoresGeometricos.H_T, _ValoresGeometricos.DIp, _ValoresGeometricos.DIg, dhp_value, dhg_value);
+                _MetodoReasignaValorKB(kBpinon, kBcorona);
 
                 tRcorona_TextBox.Text = tRcorona.ToString();
                 tRpinon_TextBox.Text = tRpinon.ToString();
-                KBcorona_TextBox.Text=kBcorona.ToString();
-                kBpinon_TextBox.Text=kBpinon.ToString();
+                KBcorona_TextBox.Text = kBcorona.ToString();
+                kBpinon_TextBox.Text = kBpinon.ToString();
 
+            }
+            else 
+            {
+                MessageBox.Show("Faltan datos. Complete los campos requeridos", "Datos incompletos", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

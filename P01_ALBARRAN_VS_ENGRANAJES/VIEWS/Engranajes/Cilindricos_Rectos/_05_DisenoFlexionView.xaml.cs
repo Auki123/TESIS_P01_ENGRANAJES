@@ -51,6 +51,10 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             // inicializa con un data grid con tabla de materiales
             datosMateriales = materiales.GetMaterialProperties();
             ListaMateriales.ItemsSource = datosMateriales;
+
+            // muestra los cuadros con valores nulos, solo para observar antes del cálculo
+            MostrarResultados mostrarDiseno = new MostrarResultados();
+            mostrarDiseno.MostrarResultadoDiseno(_ResCorona, _ResPinon, MostrarCorona, MostrarPinon);
         }
 
         #region métodos de clase
@@ -131,6 +135,10 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 _factoresK.KT_FACTOR = factoresKM.CalcularKT(temperaturaCelcius);
                 KT_value.Text = _factoresK.KT_FACTOR.ToString();
             }
+            else
+            {
+                MessageBox.Show("Faltan datos. Complete los campos requeridos", "Datos incompletos", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void KR_SELECTION(object sender, SelectionChangedEventArgs e)
@@ -180,7 +188,11 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 mostrarDiseno.MostrarResultadoDiseno(_ResCorona, _ResPinon, MostrarCorona, MostrarPinon);
 
             }
-            else { MessageBox.Show("Existen campos sin completar"); }
+
+            else 
+            {
+                MessageBox.Show("Faltan datos. Complete los campos requeridos", "Datos incompletos", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
 

@@ -51,7 +51,8 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
 
                 else
                 {
-                    MessageBox.Show("La velocidad en línea de paso es muy elevada \nNo debe superar 50.8 m/s");
+                    
+                    MessageBox.Show("La velocidad en la línea de paso excede el rango permitido (50,8 m/s), invalidando el cálculo del factor dinámico.", "Resultado no factible", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 
                 

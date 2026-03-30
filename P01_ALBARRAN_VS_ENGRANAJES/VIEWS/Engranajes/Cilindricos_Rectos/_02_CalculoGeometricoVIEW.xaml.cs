@@ -63,11 +63,16 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 ComboBoxItem item = (ComboBoxItem)presure_angleBox.SelectedItem;
                 int anguloPresion = int.Parse($"{item.Content}");
 
-                CalcularEngranaje Calcular = new CalcularEngranaje(valorDG, valorDP,anguloPresion);
-               
+                CalcularEngranaje Calcular = new CalcularEngranaje(valorDG, valorDP, anguloPresion);
+
                 _resultadoG = Calcular.calculGeometria();
-                mostrarResultados.mostrarResultadoGeometría(_resultadoG,ContenidoGeometricoDataGrid);
+                mostrarResultados.mostrarResultadoGeometría(_resultadoG, ContenidoGeometricoDataGrid);
             }
+            else
+            {
+                MessageBox.Show("Faltan datos. Complete los campos requeridos", "Datos incompletos", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         // Evento de cambio de user control
@@ -87,7 +92,8 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             }
             else
             {
-                MessageBox.Show("El diseñó no cumple con condiciones requeridas.");
+                
+                MessageBox.Show("No es posible continuar. No se ha realizado el cálculo, o el resultado no es válido.", "Acción no disponible", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

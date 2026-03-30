@@ -42,10 +42,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\ArchivosEditables\PlantillaEcilindricosRectos.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\ArchivosEditables\PlantillaEcilindricosRectos1.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DataBase\DATABASE_GEAR_VALUE.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

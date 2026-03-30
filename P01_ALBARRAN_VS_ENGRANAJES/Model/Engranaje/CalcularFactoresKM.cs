@@ -41,7 +41,9 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
                 LocalCalidadQv = 4;
             }
             else
-            { MessageBox.Show("Valor Inconsistente de Qv"); }
+            { 
+                MessageBox.Show("Valor Inconsistente de Qv.", "Datos inválidos", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
 
             if ((LocalCalidadQv >= 4) && (LocalCalidadQv <= 14))
@@ -61,12 +63,12 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
                     else
                     {
                         KvFactorCalculated = 0;
-                        MessageBox.Show("La fabricación del Engranaje No puede ser de esta Calidad.");
+                        MessageBox.Show("El engranaje no puede desenvolverse en este entorno con la velocidad de operación dispuesta. \n   La velocidad supera a la recomendada para cada calidad Qv.", "Resultado no factible", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Velocidad en línea de paso fuera de rango");
+                    MessageBox.Show("Velocidad en línea de paso fuera de rango.", "Resultado no factible", MessageBoxButton.OK, MessageBoxImage.Error);
                 }       
 
             }
@@ -86,7 +88,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
             double kB_pinon = 0;
             double kB_corona = 0;
 
-            if ( dhp!= 0 && dhg!=0)
+            if (dhp != 0 && dhg != 0)
             {
                 if (dhp < dpi && dhg < dgi)
                 {
@@ -96,23 +98,41 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
                     double mb_corona = tR_corona / ht;
                     if (mb_corona >= 0.5 && mb_corona <= 1.2)
                     {
-                        kB_corona = Math.Round(-2 * mb_corona + 3.4,3);
+                        kB_corona = Math.Round(-2 * mb_corona + 3.4, 3);
                     }
                     else if (mb_corona > 1.2)
                     { kB_corona = 1; }
+                    
 
                     double mb_pinon = tR_pinon / ht;
                     if (mb_pinon >= 0.5 && mb_pinon <= 1.2)
                     {
-                        kB_pinon = Math.Round(-2 * mb_pinon + 3.4,3);
+                        kB_pinon = Math.Round(-2 * mb_pinon + 3.4, 3);
                     }
                     else if (mb_pinon > 1.2)
                     { kB_pinon = 1; }
 
+
+                    // Se compara todo, dado que ya se ha condicionado antes, si da un resultado de 0 significa que el espesor de aro es muy pequeño y no sirve
+                    if (kB_corona == 0 || kB_pinon == 0)
+                    {
+                        MessageBox.Show("El espesor de aro de uno o ambos elementos es muy pequeño.", "Resultado no factible", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 }
 
-                else { MessageBox.Show("El diámetro de eje de los elementos supera al diámetro de raíz","Error", MessageBoxButton.OK,MessageBoxImage.Error); }
+                else
+                {
+                    MessageBox.Show("El diámetro de eje de los elementos supera al diámetro de raíz", "Datos inválidos", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
+            else
+            {
+                MessageBox.Show("Los datos no pueden tener valor cero. Ingrese valores válidos.", "Datos inválidos", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+
+
 
             return (tR_corona,tR_pinon,kB_corona,kB_pinon);
         

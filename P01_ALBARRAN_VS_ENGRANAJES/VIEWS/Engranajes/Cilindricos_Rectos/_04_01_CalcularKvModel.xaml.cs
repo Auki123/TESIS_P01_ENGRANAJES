@@ -156,16 +156,22 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
             ValidarEntradas validar = new ValidarEntradas();
             if (validar.validarEntradaNoNull(I_Qv_Value) == true)
             {
-                double ValorQv= double.Parse(I_Qv_Value.Text);
+                double ValorQv = double.Parse(I_Qv_Value.Text);
                 int ValorQvInt = (int)ValorQv;
                 CalcularFactoresKM cacularKv = new CalcularFactoresKM();
-                _kvCalculado = cacularKv.CalcularKv(_resultCargasYcinematica.VLINEAPASO,ValorQvInt);
+                _kvCalculado = cacularKv.CalcularKv(_resultCargasYcinematica.VLINEAPASO, ValorQvInt);
                 Kv_Value.Text = _kvCalculado.ToString();
 
                 _MetodoReasignaValor(_kvCalculado);
                 MostrarResultados mostrarResultados = new MostrarResultados();
                 mostrarResultados.mostrarKV_Graficamete(_resultCargasYcinematica.VLINEAPASO, _kvCalculado, wpfPlot);
             }
+            else 
+            {
+                MessageBox.Show("Faltan datos. Complete los campos requeridos", "Datos incompletos", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+
         }
     }
 }

@@ -19,9 +19,9 @@
             <LineBreak/>
                 <Run Text="Un par de engranajes cilíndricos rectos al estar sometidas a una carga, su geometría hace que estas cargas afecten de dos posibles maneras: "/>
             <LineBreak/>
-                <Run Text="  ➣ Radial "/>
+                <Run Text="  ▪ Radial "/>
             <LineBreak/>
-                <Run Text="  ➣ Axial "/>
+                <Run Text="  ▪ Axial "/>
         </TextBlock>
 
         <Grid Grid.Row="1">
@@ -30,7 +30,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Margin="20" Background="{StaticResource Extra_light_Gray}">
+            <StackPanel Margin="20" Background="{StaticResource Gris10}">
                 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Potencia (HP):                                   " VerticalAlignment="Center"></Label>

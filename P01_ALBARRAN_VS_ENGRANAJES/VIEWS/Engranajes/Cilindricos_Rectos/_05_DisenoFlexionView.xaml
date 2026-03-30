@@ -39,7 +39,7 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel Grid.Row="0" Margin="6" Background="{StaticResource Gris9}">
-                                <TextBlock Text="➣ Ancho de cara." FontSize="12" FontWeight="SemiBold"></TextBlock>
+                                <TextBlock Text="▪ Ancho de cara." FontSize="12" FontWeight="SemiBold"></TextBlock>
                                 <StackPanel Margin="15,0,0,0" Orientation="Horizontal">
                                     <TextBlock x:Name="AnchoDeCaraSugerido"></TextBlock>
                                     <TextBox Width="70" Height="20" Name="AnchoCaraF" PreviewTextInput="FiltrarEntradaNumerica"></TextBox>
@@ -54,7 +54,7 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Text="➣ Material." FontSize="12" FontWeight="SemiBold"></TextBlock>
+                                <TextBlock Grid.Row="0" Text="▪ Material." FontSize="12" FontWeight="SemiBold"></TextBlock>
 
                                 <DataGrid Margin="4" Name="ListaMateriales" Grid.Row="1"
                                         IsReadOnly="True"
@@ -73,7 +73,7 @@
                             <StackPanel Grid.Row="2" Margin="6" Background="{StaticResource Gris9}">
                                 <TextBlock x:Name="SeleccionMaterialText"></TextBlock>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text=" ‣ La resistencia del material seleccionado es: "></TextBlock>
+                                    <TextBlock Text="   La resistencia del material seleccionado es: "></TextBlock>
                                     <TextBox Width="70" Name="ResistenciaAGMA" PreviewTextInput="FiltrarEntradaNumerica"></TextBox>
                                     <TextBlock Text=" MPa. "></TextBlock>
                                 </StackPanel>
@@ -81,12 +81,12 @@
                                 <TextBlock Margin="10" Text="Factores de resistencia de la AGMA" FontWeight="SemiBold"></TextBlock>
 
                                 <StackPanel Orientation="Horizontal" Margin="10,0,10,2">
-                                    <TextBlock Text="➣ Factor de vida KL:    " FontWeight="SemiBold" FontSize="12"></TextBlock>
+                                    <TextBlock Text="▪ Factor de vida KL:    " FontWeight="SemiBold" FontSize="12"></TextBlock>
                                     <TextBlock Text=" Se define para E7 ciclos: KL =1"></TextBlock>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="10,2,0,0">
-                                    <TextBlock Text="➣ Factor de Temperatura KT:" FontWeight="SemiBold" FontSize="12"></TextBlock>
+                                    <TextBlock Text="▪ Factor de Temperatura KT:" FontWeight="SemiBold" FontSize="12"></TextBlock>
                                     <TextBlock Text="Temperatura °C:   " FontSize="12" Margin="15,0,0,0"></TextBlock>
                                     <TextBox Width="40" Name="KT_Temperaturavalue" PreviewTextInput="FiltrarEntradaNumerica"></TextBox>
                                     <Button Width="50" Click="CalcularKT" Content="Calcular " Margin="15,0,10,0"></Button>
@@ -94,7 +94,7 @@
                                 </StackPanel>
                                 
                                 <StackPanel Orientation="Horizontal" Margin="10,2,0,0">
-                                    <TextBlock Text="➣ Factor de Confiabiidad KR:     " FontWeight="SemiBold" FontSize="12"></TextBlock>
+                                    <TextBlock Text="▪ Factor de Confiabiidad KR:     " FontWeight="SemiBold" FontSize="12"></TextBlock>
                                     <ComboBox Width="70" SelectionChanged="KR_SELECTION" Name="ValoresKR">
                                         <ComboBoxItem Name="value90" Content="90,00%"></ComboBoxItem>
                                         <ComboBoxItem Name="value99" Content="99,00%"></ComboBoxItem>

@@ -145,25 +145,27 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.Engranaje
                             localNp = posiblesValoresNp.Min();
                             localmodulo = dp / localNp;
                             localNg = (int)(dg / localmodulo);
-                            MessageBox.Show("Diseño inválido, delimitado por la tabla de factor geométrico: "+ "Np: "+localNp+". Ng: "+localNg);
                             
+                            MessageBox.Show("Delimitado por la tabla de factor geométrico: " + "Np: " + localNp + ". Ng: " + localNg, "Resultado no factible", MessageBoxButton.OK, MessageBoxImage.Error);
+
                         }
 
                     }
                     else
                     {
-                        MessageBox.Show("No existe solución a esta forma de geometría");
+                        MessageBox.Show("No existe solución a la forma geométrica.", "Resultado no factible", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("Dato inconsistente, El piñón es más grande que la Corona");
+                    MessageBox.Show("El diámetro del piñón no puede ser mayor que la coróna.", "Datos inválidos", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show(" Hay entrada de datos con valor nulo");
+                MessageBox.Show("Los datos no pueden tener valor cero. Ingrese valores válidos.", "Datos inválidos", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
 
             resultadoR.DP = dp;
