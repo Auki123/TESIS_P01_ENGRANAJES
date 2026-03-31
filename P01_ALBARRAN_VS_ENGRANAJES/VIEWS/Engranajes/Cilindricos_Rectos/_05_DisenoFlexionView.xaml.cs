@@ -187,6 +187,12 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.VIEWS.Engranajes.Cilindricos_Rectos
                 MostrarResultados mostrarDiseno = new MostrarResultados();
                 mostrarDiseno.MostrarResultadoDiseno(_ResCorona, _ResPinon, MostrarCorona, MostrarPinon);
 
+                if (_ResCorona.FactorSeguridad >= 1 || _ResPinon.FactorSeguridad >= 1)
+                {
+                    _ResultadoFinalDisenoText.Text = "El diseño es válido con factores de seguridad mayores que 1.";
+                }
+                else { _ResultadoFinalDisenoText.Text = "El diseño no es válido."; }
+
             }
 
             else 

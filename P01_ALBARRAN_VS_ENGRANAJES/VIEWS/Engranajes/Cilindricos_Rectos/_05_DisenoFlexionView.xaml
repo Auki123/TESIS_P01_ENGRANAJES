@@ -155,23 +155,39 @@
             </Border>
             
             <Border Grid.Row="2" BorderBrush="{StaticResource Azul7}" BorderThickness="3">
-                <StackPanel Height="20" VerticalAlignment="Center" Margin="0,0,15,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Grid Height="20" VerticalAlignment="Center" Margin="0,0,15,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                    <Button Content="Recalcular Factores AGMA"
+                        <TextBlock Text="      Resultado:  " HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock x:Name="_ResultadoFinalDisenoText"></TextBlock>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="Recalcular Factores AGMA"
                             Margin="0,0,10,0"
                             Width="150"
                             Click="Regresar_Click"></Button>
-                    
-                    <Button Content="Guardar Resultados"
+
+                        <Button Content="Guardar Resultados"
                             Click="GuardarResult_Click"
                             Width="120"
                             Margin="0,0,10,0"></Button>
-                    
-                    <Button Content="Finalizar"
+
+                        <Button Content="Finalizar"
                             Width="70"
                             Click="FinalizarTrabajo"
                             ></Button>
-                </StackPanel>
+
+                    </StackPanel>
+
+                    
+
+                </Grid>
             </Border>
         </Grid>
     </Border>
