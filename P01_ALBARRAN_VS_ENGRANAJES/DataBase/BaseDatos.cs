@@ -24,7 +24,8 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.DataBase
         public BaseDatos()
         {
             string rutaDB = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DataBase", "DATABASE_GEAR_VALUE.db");
-            _cadenaconexion = $"Data Source={rutaDB};";
+            _cadenaconexion = $"Data Source={rutaDB};Mode=ReadOnly;";    // Base de datos solo para lectura, si requiere escritura, la dinámica cambia y es necesario crear carpetas para evitar errores de permisos de escritura
+
         }
 
         #region  Etracción de datos de módulos métricos

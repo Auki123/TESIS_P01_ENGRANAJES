@@ -36,7 +36,7 @@ namespace P01_ALBARRAN_VS_ENGRANAJES.Model.PDF_Manager
             _ResultDisP = Rpinon;
             _ResultDisg = Rcorona;
 
-            _miplantillaResultados=Path.Combine("Assets", "ArchivosEditables", "PlantillaEcilindricosRectos1.pdf");
+            _miplantillaResultados=Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Assets", "ArchivosEditables", "PlantillaEcilindricosRectos1.pdf");
         }
 
 

@@ -56,8 +56,12 @@
     <Content Include="Assets\ArchivosEditables\ManualDeUsuario.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Assets\Images\UI\ElementosMaquina.png" />
-    <Resource Include="Assets\Images\UI\LogoSistema.png" />
+    <Resource Include="Assets\Images\UI\ElementosMaquina.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\UI\LogoSistema.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -71,14 +75,24 @@
     <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E1_ENGRANAJE_RECTO.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_factorKv.png" />
-    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_IndiceCalidad_SegunUso.png" />
+    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_factorKv.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_IndiceCalidad_SegunUso.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_IndiceCalidad_SegunVelocidad.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_ParametroKB.png" />
-    <Resource Include="Assets\Images\UI\Icon_Engrane.ico" />
-    <Resource Include="Assets\Images\UI\Logo_UTN.png" />
+    <Resource Include="Assets\Images\Tecnico\Engranaje_CilindricoRecto\E2_Esfuerzo_ParametroKB.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\UI\Icon_Engrane.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\UI\Logo_UTN.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\UI\Mecatronica.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
