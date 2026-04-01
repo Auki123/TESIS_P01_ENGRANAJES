@@ -29,6 +29,7 @@
     <None Remove="Assets\Images\UI\Logo_UTN.png" />
     <None Remove="Assets\Images\UI\Mecatronica.png" />
     <None Remove="DataBase\DATABASE_GEAR_VALUE.db" />
+    <None Remove="LICENCES\Licences.txt" />
     <None Remove="THIRD-PARTY-NOTICES.txt" />
   </ItemGroup>
 
@@ -54,6 +55,9 @@
 
   <ItemGroup>
     <Content Include="Assets\ArchivosEditables\ManualDeUsuario.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LICENCES\Licences.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Assets\Images\UI\ElementosMaquina.png">

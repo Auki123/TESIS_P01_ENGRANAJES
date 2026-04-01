@@ -1,0 +1,30 @@
+THIRD-PARTY LICENSES
+
+This software makes use of the following third-party libraries and tools:
+
+1. SQLite
+   SQLite is in the public domain.
+   Source: https://www.sqlite.org/
+
+2. DB Browser for SQLite
+   DB Browser for SQLite is licensed under the GNU General Public License (GPL) Version 3.
+   Source: https://sqlitebrowser.org/
+
+3. ScottPlot
+   ScottPlot is licensed under the MIT License.
+   Copyright (c) Scott Harden
+   Source: https://scottplot.net/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction...
+
+4. PdfSharp
+   PDFsharp is licensed under the MIT License.
+   Copyright (c) empira Software GmbH
+   Source: http://pdfsharp.net/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction...
+
+---
+
+This project uses the above libraries in accordance with their respective licenses.
+All rights and credits belong to their original authors.
